@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 
 <!--adding bootstrap like external lib-->
-<html lang="en" xmlns:th="http://www.thymleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Welcome to My Application</title>
 
     <!--adding bootstrap like external lib-->
     <link rel="stylesheet" type="text/css"
-          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" >
+
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+
+    />
 </head>
 <body>
 
@@ -16,7 +19,7 @@
 
 <div class="container-fluid text-center">
     <h1>Welcome to My Application Guys !</h1>
-    <h2><a href="/users">Manage Users</a></h2>
+    <a class="h2" th:href="@{/users}">Manage Users</a>
 </div>
 
 
