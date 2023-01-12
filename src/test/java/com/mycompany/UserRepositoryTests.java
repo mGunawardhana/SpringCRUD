@@ -60,6 +60,13 @@ public class UserRepositoryTests {
         ).isEqualTo("sample123");
     }
 
+    /** choose user by id */
+    @Test
+    public void testGet(){
+        Optional<User> optionalUser =repo.findById(1);
+        Assertions.assertThat(optionalUser).isPresent();
+        System.out.println(optionalUser.get());
+    }
 
 
 }
