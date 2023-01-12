@@ -2,7 +2,6 @@ package com.mycompany;
 
 import com.mycompany.user.User;
 import com.mycompany.user.UserRepository;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,33 +9,57 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.Optional;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 public class UserRepositoryTests {
-    @Autowired private UserRepository repo;
+    @Autowired
+    private UserRepository repo;
+
+    /** save user method */
     @Test
-    public void testAddNew(){
+    public void testAddNew() {
         User user = new User();
-        user.setEmail("dini@gmail.com");
-        user.setPassword("dini");
-        user.setFirstName("dini");
-        user.setLastName("dini");
+        user.setEmail("manee@gmail.com");
+        user.setPassword("mane");
+        user.setFirstName("mane");
+        user.setLastName("mane");
 
-        User savedUser = repo.save(user);
+        User save = repo.save(user);
 
-        Assertions.assertThat(savedUser).isNotNull();
-        Assertions.assertThat(savedUser.getId()).isGreaterThan(0);
+        Assertions.assertThat(save).isNotNull();
+        Assertions.assertThat(save.getId()).isGreaterThan(0);
+
+
     }
 
+    /** get all details on console output */
     @Test
-    public void testListAll(){
+    public void testListAll() {
         Iterable<User> users = repo.findAll();
         Assertions.assertThat(users).hasSizeGreaterThan(0);
 
-        for (User user : users){
+        for (User user : users) {
             System.out.println(user);
         }
     }
+
+    /** user update option */
+    @Test
+    public void testUpdate(){
+        Optional<User> optionalUser = repo.findById(1);
+        User user = optionalUser.get();
+        user.setPassword("sample123");
+        repo.save(user);
+
+        User updateUser = repo.findById(user.getId()).get();
+        Assertions.assertThat(
+                updateUser.getPassword()
+        ).isEqualTo("sample123");
+    }
+
+
 
 }

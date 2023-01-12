@@ -7,7 +7,6 @@ import lombok.*;
 
 @Table(name = "user")
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -20,7 +19,7 @@ public class User {
     private Integer id;
     /*generated auto id is mean by id is generated id automatically by database*/
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true,length = 45)
     private String email;
     @Column(length = 15, nullable = false)
     private String password;
@@ -28,5 +27,6 @@ public class User {
     private String firstName;
     @Column(length = 45, nullable = false)
     private String lastName;
+
 
 }
