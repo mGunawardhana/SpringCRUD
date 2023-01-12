@@ -18,7 +18,9 @@ public class UserRepositoryTests {
     @Autowired
     private UserRepository repo;
 
-    /** save user method */
+    /**
+     * save user method
+     */
     @Test
     public void testAddNew() {
         User user = new User();
@@ -35,7 +37,9 @@ public class UserRepositoryTests {
 
     }
 
-    /** get all details on console output */
+    /**
+     * get all details on console output
+     */
     @Test
     public void testListAll() {
         Iterable<User> users = repo.findAll();
@@ -46,26 +50,38 @@ public class UserRepositoryTests {
         }
     }
 
-    /** user update option */
+    /**
+     * user update option
+     */
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
         Optional<User> optionalUser = repo.findById(1);
         User user = optionalUser.get();
         user.setPassword("sample123");
         repo.save(user);
 
         User updateUser = repo.findById(user.getId()).get();
-        Assertions.assertThat(
-                updateUser.getPassword()
-        ).isEqualTo("sample123");
+        Assertions.assertThat(updateUser.getPassword()).isEqualTo("sample123");
     }
 
-    /** choose user by id */
+    /**
+     * choose user by id
+     */
     @Test
-    public void testGet(){
-        Optional<User> optionalUser =repo.findById(1);
+    public void testGet() {
+        Optional<User> optionalUser = repo.findById(1);
         Assertions.assertThat(optionalUser).isPresent();
         System.out.println(optionalUser.get());
+    }
+
+    /**
+     * delete by given id
+     */
+    @Test
+    public void testDelete() {
+        repo.deleteById(5);
+        Optional<User> optionalUser = repo.findById(5);
+        Assertions.assertThat(optionalUser).isNotPresent();
     }
 
 
