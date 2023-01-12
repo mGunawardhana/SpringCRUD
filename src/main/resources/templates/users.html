@@ -18,8 +18,8 @@
     <div><h1>Manage Users</h1></div>
 
     <div>
-        <table>
-            <thead>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>e-mail</th>
@@ -28,6 +28,19 @@
                 <th></th>
             </tr>
             </thead>
+            <tbody>
+            <th:block th:each="user : ${listUsers}">
+                <tr>
+                    <td>[[${user.id}}]]</td>
+                    <td>[[${user.email}}]]</td>
+                    <td>[[${user.firstName}}]]</td>
+                    <td>[[${user.lastName}}]]</td>
+                    <td>
+
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
         </table>
     </div>
 </div>
