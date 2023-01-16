@@ -24,18 +24,17 @@ public class UserRepositoryTests {
      */
     @Test
     public void testAddNew() {
+
         User user = new User();
-        user.setEmail("bashi@gmail.com");
-        user.setPassword("bash");
-        user.setFirstName("bash");
-        user.setLastName("bash");
+        user.setEmail("pasan@gmail.com");
+        user.setPassword("pasan");
+        user.setFirstName("pasan");
+        user.setLastName("pasan");
 
         User save = repo.save(user);
 
         Assertions.assertThat(save).isNotNull();
         Assertions.assertThat(save.getId()).isGreaterThan(0);
-
-
     }
 
     /**
@@ -84,6 +83,4 @@ public class UserRepositoryTests {
         Optional<User> optionalUser = repo.findById(5);
         Assertions.assertThat(optionalUser).isNotPresent();
     }
-
-
 }
