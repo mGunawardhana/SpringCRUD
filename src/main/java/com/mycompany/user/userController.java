@@ -16,11 +16,16 @@ public class userController {
     @GetMapping("/users")
     public String showUserList(Model model) {
         List<User> listUsers = service.listAll();
-        model.addAttribute("listUsers",listUsers);
+        model.addAttribute("listUsers", listUsers);
         return "users";
     }
 
+    @GetMapping("/users/new")
+    public String showNewForm(Model model) {
+        model.addAttribute("user", new User());
+        return "user_form";
 
+    }
 
 }
 
