@@ -15,6 +15,7 @@ import java.util.Optional;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 public class UserRepositoryTests {
+
     @Autowired
     private UserRepository repo;
 
@@ -24,10 +25,10 @@ public class UserRepositoryTests {
     @Test
     public void testAddNew() {
         User user = new User();
-        user.setEmail("manee@gmail.com");
-        user.setPassword("mane");
-        user.setFirstName("mane");
-        user.setLastName("mane");
+        user.setEmail("bashi@gmail.com");
+        user.setPassword("bash");
+        user.setFirstName("bash");
+        user.setLastName("bash");
 
         User save = repo.save(user);
 

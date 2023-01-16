@@ -16,7 +16,10 @@
 
 <div class="container-fluid text-center">
     <div><h1>Manage Users</h1></div>
-
+    <div class="m-2">
+<!--        <button class="h3 ui-button" href="" th:href="@{/users/new}">Add New User</button>-->
+        <a class="h3" href="" th:href="@{/users/new}">Add New User</a>
+    </div>
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -31,12 +34,13 @@
             <tbody>
             <th:block th:each="user : ${listUsers}">
                 <tr>
-                    <td>[[${user.id}}]]</td>
-                    <td>[[${user.email}}]]</td>
-                    <td>[[${user.firstName}}]]</td>
-                    <td>[[${user.lastName}}]]</td>
+                    <td>[[${user.id}]]</td>
+                    <td>[[${user.email}]]</td>
+                    <td>[[${user.firstName}]]</td>
+                    <td>[[${user.lastName}]]</td>
                     <td>
-
+                        <a class="h4 mr-3" th:href="@{'/users/edit/'+${user.id}}">Edit</a>
+                        <a class="h4 mr-3" th:href="@{'/users/delete/'+${user.id}}">Delete</a>
                     </td>
                 </tr>
             </th:block>
