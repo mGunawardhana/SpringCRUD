@@ -27,5 +27,7 @@ public class User {
     @Column(length = 45, nullable = false)
     private String lastName;
 
+    private boolean enabled;
+
 
 }
